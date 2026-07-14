@@ -1,10 +1,10 @@
-# AI Body Measurement — Working Demo
+# AI Body Measurement - Working Demo
 
 A runnable prototype of the core AI engine behind the **AI Body Measurement Platform**:
 a person is photographed once (full-body, frontal), and the engine returns tailoring
 measurements, confidence scores, and recommended uniform sizes.
 
-This is the hard, defensible part of the whole product — the computer-vision pipeline.
+This is the hard, defensible part of the whole product - the computer-vision pipeline.
 Everything else (auth, org management, dashboards, production workflow) is standard app
 work; measurement accuracy is what makes the platform worth building.
 
@@ -64,18 +64,18 @@ recovers them (scale calibration, distances, ellipse perimeter, size bands, etc.
 
 | Module (spec) | Where it lives in this demo |
 |---|---|
-| 6 — Live AI Vision Engine (human/landmark/segmentation) | `extract_from_image` (MediaPipe Pose + Segmentation) |
-| 7 — Auto Quality Validation | `frontality`, visibility-weighted confidence, "retake" notes |
-| 9 — AI Processing Engine (scale, alignment, prediction) | `cm_per_pixel`, `linear_measurements`, `circumference_measurements` |
-| 10 — Automatic Body Measurements | full measurement set (upper & lower body) |
-| 11 — Body Shape Intelligence | `classify_body_shape` |
-| 12 — AI Confidence Score | `Measurement.confidence` + `error_margin_cm` |
-| 14 — Size Recommendation Engine | `size_engine.recommend` with US/UK/EU conversion |
-| 17 — Digital Measurement Report | printed report + `*_report.json` + annotated image |
+| 6 - Live AI Vision Engine (human/landmark/segmentation) | `extract_from_image` (MediaPipe Pose + Segmentation) |
+| 7 - Auto Quality Validation | `frontality`, visibility-weighted confidence, "retake" notes |
+| 9 - AI Processing Engine (scale, alignment, prediction) | `cm_per_pixel`, `linear_measurements`, `circumference_measurements` |
+| 10 - Automatic Body Measurements | full measurement set (upper & lower body) |
+| 11 - Body Shape Intelligence | `classify_body_shape` |
+| 12 - AI Confidence Score | `Measurement.confidence` + `error_margin_cm` |
+| 14 - Size Recommendation Engine | `size_engine.recommend` with US/UK/EU conversion |
+| 17 - Digital Measurement Report | printed report + `*_report.json` + annotated image |
 
 ## Accuracy roadmap (what a production build adds)
 
-This prototype is a single-view, geometry-first estimator — deliberately transparent and
+This prototype is a single-view, geometry-first estimator - deliberately transparent and
 testable. The path to production accuracy:
 
 - **Multi-angle capture** (front + both sides) to measure true depth instead of estimating
@@ -88,4 +88,4 @@ testable. The path to production accuracy:
 - **On-device inference** via ONNX Runtime / TensorFlow Lite for the mobile app.
 
 Reference systems solving the same problem commercially: Bodygram, 3DLook, Size Stream,
-Nettelo — useful accuracy benchmarks to design against.
+Nettelo - useful accuracy benchmarks to design against.
